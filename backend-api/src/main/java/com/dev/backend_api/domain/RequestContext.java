@@ -8,15 +8,19 @@ public class RequestContext {
         // Private constructor để tránh khởi tạo class
     }
 
-    public static void start(String userId) {
-        USER_ID.set(userId);
+    public static void start() {
+        USER_ID.remove();
     }
 
     public static String getUserId() {
         return USER_ID.get();
     }
 
+    public static void setUserId(String userId) {
+        USER_ID.set(userId);
+    }
+
     public static void clear() {
-        USER_ID.remove();
+       
     }
 }

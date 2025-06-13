@@ -12,5 +12,8 @@ public interface UserRepository extends JpaRepository<UserEntity, String>, Custo
 
     @Query(value = "SELECT id FROM users WHERE id LIKE CONCAT(:prefix, '%') ORDER BY id DESC LIMIT 1", nativeQuery = true)
     String findLastIdStartingWith(@Param("prefix") String prefix);
+
+    UserEntity findByEmailIgnoreCase(String email);
+    UserEntity findUserByUserId(String userId); 
 }
 

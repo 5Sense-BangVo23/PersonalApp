@@ -13,9 +13,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 
@@ -39,14 +37,15 @@ public class UserEntity extends Auditable{
     private Integer loginAttempts;
     private LocalDateTime lastLogin;
     private String phone;
+    private String bio;
     private String imageUrl;
-    private boolean accountNonExpried;
+    private boolean accountNonExpired;
     private boolean accountNonLocked;
     private boolean enabled;
     private boolean credentialsNonExpired;
     private boolean mfa;
     @JsonIgnore
-    private String qrCodeSecrect;
+    private String qrCodeSecret;
     @Column(columnDefinition = "TEXT")
     private String qrCodeImageUri;
 
@@ -67,6 +66,30 @@ public class UserEntity extends Auditable{
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
+
+    public void setQrCodeSecret(String qrCodeSecret) {
+        this.qrCodeSecret = qrCodeSecret;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    public String getQrCodeSecret() {
+        return qrCodeSecret;
     }
 
     public String getLastName() {
@@ -97,9 +120,6 @@ public class UserEntity extends Auditable{
         return imageUrl;
     }
 
-    public boolean isAccountNonExpried() {
-        return accountNonExpried;
-    }
 
     public boolean isAccountNonLocked() {
         return accountNonLocked;
@@ -117,9 +137,7 @@ public class UserEntity extends Auditable{
         return mfa;
     }
 
-    public String getQrCodeSecrect() {
-        return qrCodeSecrect;
-    }
+   
 
     public String getQrCodeImageUri() {
         return qrCodeImageUri;
@@ -165,9 +183,7 @@ public class UserEntity extends Auditable{
         this.imageUrl = imageUrl;
     }
 
-    public void setAccountNonExpried(boolean accountNonExpried) {
-        this.accountNonExpried = accountNonExpried;
-    }
+    
 
     public void setAccountNonLocked(boolean accountNonLocked) {
         this.accountNonLocked = accountNonLocked;
@@ -185,9 +201,7 @@ public class UserEntity extends Auditable{
         this.mfa = mfa;
     }
 
-    public void setQrCodeSecrect(String qrCodeSecrect) {
-        this.qrCodeSecrect = qrCodeSecrect;
-    }
+   
 
     public void setQrCodeImageUri(String qrCodeImageUri) {
         this.qrCodeImageUri = qrCodeImageUri;

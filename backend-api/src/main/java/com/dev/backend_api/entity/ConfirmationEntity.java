@@ -30,7 +30,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "confirmations")
 @JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class Confirmation extends Auditable {
+public class ConfirmationEntity extends Auditable {
 
    @Column(name = "`key`")
    private String key;
@@ -46,7 +46,7 @@ public class Confirmation extends Auditable {
     @JsonProperty("user_id")
     private UserEntity userEntity;
 
-    public Confirmation(UserEntity userEntity) {
+    public ConfirmationEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
         this.key = java.util.UUID.randomUUID().toString();
       

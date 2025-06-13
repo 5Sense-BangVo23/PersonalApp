@@ -11,8 +11,12 @@ import com.dev.backend_api.listeners.CustomIdEntityListener;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
@@ -37,6 +41,18 @@ public abstract class Auditable implements Identifiable {
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @ManyToOne(optional = true)
+    @JoinColumn(
+        name = "owner_id",
+        referencedColumnName = "id",
+        nullable = true,
+        foreignKey = @ForeignKey(name = "fk_auditable_owner_id", value = ConstraintMode.CONSTRAINT)
+    )
+    private UserEntity owner;
+
+
+
 
     @Override
     public String getId() {
